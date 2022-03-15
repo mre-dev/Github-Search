@@ -23,3 +23,5 @@ const allIconsType = {
 }
 
 export { AiFillGithub } from 'react-icons/ai';
+export { MdCancel } from 'react-icons/md';
+export { GiConfirmed } from 'react-icons/gi';

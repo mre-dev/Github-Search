@@ -21,8 +21,10 @@ export const HomePage = (props) => {
     }
 
     useEffect(() => {
-        setUsers([...users, {}]);
-    }, []);
+        if (users.length === 0) {
+            setUsers([...users, {}]);
+        }
+    }, [users]);
 
     const resetHandler = (e) => {
         setUsers([]);

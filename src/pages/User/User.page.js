@@ -31,7 +31,6 @@ export const UserPage = (props) => {
     useEffect(() => {
         if(Object.keys(userData).length > 0) {
             setShowSpinner(false);
-            console.log(userData);
         }
     }, [userData]);
 

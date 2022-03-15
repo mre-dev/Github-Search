@@ -1,0 +1,19 @@
+.container {
+    width: 90%;
+    margin: 5rem auto 0 auto;
+}
+
+.container form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.container form input {
+    padding: 0.5rem;
+    font-size: 1.6rem;
+    border: 1px solid #ccc;
+    height: 4rem;
+    color: var(--dark-color);
+    font-weight: 500;
+}

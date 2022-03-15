@@ -9,7 +9,7 @@ import Styles from './Home.page.module.css';
 export const HomePage = (props) => {
 
     const customDispatch = useDispatch();
-    const [users, setUsers] = React.useState(useSelector(state => state.userReducer));
+    const [users, setUsers] = React.useState(useSelector(state => state.userReducer) || []);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -51,7 +51,7 @@ export const HomePage = (props) => {
 
                 <div className={Styles.resultContainer}>
                     {
-                        users &&
+                        users.length > 0 &&
                         users.map((user, index) => {
                             return <UserCard key={index} avatar={user.avatar_url} user={user.login}/>
                         })

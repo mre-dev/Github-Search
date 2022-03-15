@@ -1,0 +1,13 @@
+.container {
+    margin: 2.5rem;
+}
+
+.container h2 {
+    font-size: 2.4rem;
+    color: var(--dark);
+}
+
+.container p {
+    font-size: 1.6rem;
+    color: var(--dark);
+}

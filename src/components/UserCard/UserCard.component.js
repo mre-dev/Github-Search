@@ -3,7 +3,6 @@ import React from 'react';
 import Styles from "assets/styles/components/UserCard/UserCard.module.css";
 import { Button } from 'components/Button/Button.component';
 import { useNavigate } from 'react-router-dom';
-import { PATHS } from 'configs/routes.config';
 
 export const UserCard = (props) => {
 
@@ -15,7 +14,7 @@ export const UserCard = (props) => {
             <p className={Styles.userName}>{props.user}</p>
             <Button type='dark' size='small' text='More' id='moreBtn' btnType='button' click={(e) => {
                 e.preventDefault();
-                Nav(PATHS.USER_DETAILS + props.user);
+                Nav(`user/${props.user}`);
             }} />
         </div>
     );

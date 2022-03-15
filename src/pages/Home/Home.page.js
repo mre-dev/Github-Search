@@ -3,15 +3,13 @@ import { Button, Input, UserCard } from 'components';
 import { Header } from 'layouts';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addUsers } from 'redux/actions';
+import { addUsers, clearUsers } from 'redux/actions';
 import Styles from './Home.page.module.css';
 
 export const HomePage = (props) => {
 
     const customDispatch = useDispatch();
-    const [userSelector , setUserSelector] = React.useState(useSelector(state => state.userReducer));
-
-    const [users, setUsers] = React.useState([]);
+    const [users, setUsers] = React.useState(useSelector(state => state.userReducer));
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -23,10 +21,21 @@ export const HomePage = (props) => {
     }
 
     useEffect(() => {
-        if(userSelector.length > 0){
-            setUsers(userSelector);
+        console.log("ok");
+        // check if users is empty, get again
+        if (users.length === 0) {
+            setUsers([]);
+            GetUsers().then(response => {
+                setUsers(response.data.items);
+                customDispatch(addUsers(response.data.items));
+            });
         }
-    }, [userSelector]);
+    }, []);
+
+    const resetHandler = (e) => {
+        setUsers([]);
+        customDispatch(clearUsers());
+    }
 
     return (
         <div>
@@ -36,7 +45,10 @@ export const HomePage = (props) => {
                 <form onSubmit={handleSubmit}>
                     <Input type='text' placeholder='Search Users ...' id='searchInput' name='searchInput'/>
                     <Button type='dark' size='large' text='Submit' id='searchBtn' btnType='submit' />
-                    <Button type='light' size='large' text='Clear' id='resetBtn' btnType='reset' />
+                    <Button type='light' size='large' text='Clear' id='resetBtn' btnType='reset' click={(e) => {
+                        e.preventDefault();
+                        resetHandler(e);
+                    }}/>
                 </form>
 
                 <div className={Styles.resultContainer}>

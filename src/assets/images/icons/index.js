@@ -21,3 +21,5 @@ const allIconsType = {
     wi_WeatherIcons: "react-icons/wi",
     cg_cssggIcons: "react-icons/cg"
 }
+
+export { AiFillGithub } from 'react-icons/ai';

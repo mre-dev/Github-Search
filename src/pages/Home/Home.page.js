@@ -1,15 +1,32 @@
-import { Button, Input } from 'components';
+import { GetUsers } from 'api/users.api';
+import { Button, Input, UserCard } from 'components';
 import { Header } from 'layouts';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addUsers } from 'redux/actions';
 import Styles from './Home.page.module.css';
 
 export const HomePage = (props) => {
 
+    const customDispatch = useDispatch();
+    const [userSelector , setUserSelector] = React.useState(useSelector(state => state.userReducer));
+
+    const [users, setUsers] = React.useState([]);
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const searchValue = e.target.searchInput.value;
-        console.log("searchValue : ", searchValue);
+        GetUsers(searchValue).then(response => {
+            setUsers(response.data.items);
+            customDispatch(addUsers(response.data.items));
+        });
     }
+
+    useEffect(() => {
+        if(userSelector.length > 0){
+            setUsers(userSelector);
+        }
+    }, [userSelector]);
 
     return (
         <div>
@@ -21,6 +38,15 @@ export const HomePage = (props) => {
                     <Button type='dark' size='large' text='Submit' id='searchBtn' btnType='submit' />
                     <Button type='light' size='large' text='Clear' id='resetBtn' btnType='reset' />
                 </form>
+
+                <div className={Styles.resultContainer}>
+                    {
+                        users.length > 0 &&
+                        users.map((user, index) => {
+                            return <UserCard key={index} avatar={user.avatar_url} user={user.login}/>
+                        })
+                    }
+                </div>
             </div>
 
         </div>

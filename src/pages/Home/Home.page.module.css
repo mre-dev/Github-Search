@@ -17,3 +17,11 @@
     color: var(--dark-color);
     font-weight: 500;
 }
+
+.resultContainer {
+    margin-top: 5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    justify-content: center;
+}

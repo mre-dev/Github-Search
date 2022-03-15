@@ -1,1 +1,30 @@
 @import url(UserCard-var.css);
+
+.userCardContainer {
+    border: 0.1rem solid lightgray;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 0.5rem 0.1rem lightgrey;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 20rem;
+    height: 20rem;
+}
+
+.userCardContainer img {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    mix-blend-mode: multiply;
+}
+
+.userCardContainer p {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--dark-color);
+}

@@ -21,8 +21,6 @@ export const HomePage = (props) => {
     }
 
     useEffect(() => {
-        console.log("ok");
-        // check if users is empty, get again
         if (users.length === 0) {
             setUsers([]);
             GetUsers().then(response => {
@@ -53,7 +51,7 @@ export const HomePage = (props) => {
 
                 <div className={Styles.resultContainer}>
                     {
-                        users.length > 0 &&
+                        users &&
                         users.map((user, index) => {
                             return <UserCard key={index} avatar={user.avatar_url} user={user.login}/>
                         })

@@ -1,3 +1,4 @@
+import { Header } from 'layouts';
 import React, { Fragment, useEffect } from 'react';
 import { useParams, Link  } from 'react-router-dom';
 import swal from 'sweetalert';
@@ -15,6 +16,8 @@ export const UserPage = (props) => {
 
     return (
         <div>
+            <Header title="Github Search" />
+            
             {userName ?
                 // if productId is found, render product page
                 <Fragment>

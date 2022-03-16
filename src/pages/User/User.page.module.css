@@ -139,11 +139,21 @@
 
 .container .ccontainerBodyRepos .repo div {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: wrap;
-    margin-top: 2.5rem;
-    justify-content: center;
-    align-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.container .ccontainerBodyRepos .repo div p {
+    background-color: var(--info);
+    color: var(--light);
+    display: inline-block;
+    padding: 0.2rem 0.7rem;
+    text-align: center;
+    margin: 0.3rem;
+    border-radius: 5px;
+    font-size: 1.3rem;
 }
 
 @media only screen and (max-width: 768px) {

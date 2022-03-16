@@ -21,10 +21,8 @@ export const HomePage = (props) => {
     }
 
     useEffect(() => {
-        if (users.length === 0) {
-            setUsers([...users, {}]);
-        }
-    }, [users]);
+        setUsers(users);
+    });
 
     const resetHandler = (e) => {
         setUsers([]);
@@ -47,7 +45,7 @@ export const HomePage = (props) => {
 
                 <div className={Styles.resultContainer}>
                     {
-                        users.length > 0 &&
+                        users &&
                         users.map((user, index) => {
                             if (user.hasOwnProperty('login')) {
                                 return <UserCard key={index} avatar={user.avatar_url} user={user.login}/>

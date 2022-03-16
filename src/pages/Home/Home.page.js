@@ -9,8 +9,7 @@ import Styles from './Home.page.module.css';
 export const HomePage = (props) => {
 
     const customDispatch = useDispatch();
-    const tempUser = useSelector(state => state.userReducer);
-    const [users, setUsers] = React.useState(tempUser || []);
+    const [users, setUsers] = React.useState(useSelector(state => state.userReducer) || []);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -20,10 +19,6 @@ export const HomePage = (props) => {
             customDispatch(addUsers(response.data.items));
         });
     }
-
-    useEffect(() => {
-        setUsers(tempUser);
-    }, [tempUser]);
 
     const resetHandler = (e) => {
         setUsers([]);

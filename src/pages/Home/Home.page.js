@@ -9,7 +9,8 @@ import Styles from './Home.page.module.css';
 export const HomePage = (props) => {
 
     const customDispatch = useDispatch();
-    const [users, setUsers] = React.useState(useSelector(state => state.userReducer) || []);
+    const tempUser = useSelector(state => state.userReducer);
+    const [users, setUsers] = React.useState(tempUser || []);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -21,8 +22,8 @@ export const HomePage = (props) => {
     }
 
     useEffect(() => {
-        setUsers(users);
-    });
+        setUsers(tempUser);
+    }, [tempUser]);
 
     const resetHandler = (e) => {
         setUsers([]);
@@ -45,12 +46,14 @@ export const HomePage = (props) => {
 
                 <div className={Styles.resultContainer}>
                     {
-                        users &&
+                        (users && users.length > 0) ?
                         users.map((user, index) => {
                             if (user.hasOwnProperty('login')) {
                                 return <UserCard key={index} avatar={user.avatar_url} user={user.login}/>
                             }
                         })
+                        : 
+                        <p>No users found</p>
                     }
                 </div>
             </div>

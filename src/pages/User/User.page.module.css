@@ -136,3 +136,22 @@
 .container .ccontainerBodyRepos .repo p {
     font-size: 1.3rem;
 }
+
+.container .ccontainerBodyRepos .repo div {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-top: 2.5rem;
+    justify-content: center;
+    align-content: center;
+}
+
+@media only screen and (max-width: 768px) {
+    .container .ccontainerBodyHeader {
+        flex-direction: column;
+    }
+
+    .container .ccontainerBodyHeaderRight {
+        width: 100%;
+    }
+}

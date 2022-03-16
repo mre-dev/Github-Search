@@ -100,6 +100,11 @@ export const UserPage = (props) => {
                                     <div className={Styles.repo} key={index}>
                                         <Navigation text={repo.name} link={repo.html_url} external/>
                                         <p>{repo.description}</p>
+                                        <div className={Styles.repoInfo}>
+                                            <p>language : {repo.language}</p>
+                                            <p>starts : {repo.stargazers_count}</p>
+                                            <p>forks : {repo.forks_count}</p>
+                                        </div>
                                     </div>
                                 )
                             })

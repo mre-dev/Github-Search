@@ -20,6 +20,14 @@ export const HomePage = (props) => {
         });
     }
 
+    const forceUpdate = React.useReducer(bool => !bool)[1];
+    useEffect(() => {
+        if(users.users) {
+            setUsers(users.users);
+        }
+        forceUpdate();
+    }, [users]);
+
     const resetHandler = (e) => {
         setUsers([]);
         customDispatch(clearUsers());
